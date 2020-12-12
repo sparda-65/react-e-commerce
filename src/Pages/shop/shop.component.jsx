@@ -18,6 +18,7 @@ export class ShopPage extends Component {
         <CollectionPreview key={id} {...otherSectionProps}/>
         ))}
       </div>
+      
     );
   }
 }
