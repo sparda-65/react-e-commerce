@@ -3,7 +3,8 @@ import '../form-input/form-input.component.jsx'
 import FormInput from '../form-input/form-input.component';
 import './sign-in.styles.scss';
 import CustomButton from "../custom-button/custom-button.component";
-import {signInWithGoogle} from '../../firebase/firebase.utils.js';
+import {signInWithGoogle,auth} from '../../firebase/firebase.utils.js';
+
 
 export class SignIn extends Component {
   constructor(props) {
@@ -15,13 +16,22 @@ export class SignIn extends Component {
     };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
-    this.setState({
-      email: "", 
-      password: "",
-    });
+    const {email,password}=this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email,password);
+
+            this.setState({
+                email:'',
+                password:'',
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
   };
 
   handleChange = (event) => {
@@ -32,6 +42,7 @@ export class SignIn extends Component {
     console.log(value);
   };
   render() {
+    const {email,password}=this.state;
     return (
       <div className="signin">
         <h1>I already have an account</h1>
@@ -42,7 +53,7 @@ export class SignIn extends Component {
             name="email"
             type="email"
             label="Email"
-            value={this.state.email}
+            value={email}
             required
           />
           
@@ -51,7 +62,7 @@ export class SignIn extends Component {
             name="password"
             type="password"
             label="Password"
-            value={this.state.password}
+            value={password}
             required
           />
         <div className="buttons">
