@@ -9,7 +9,7 @@ import SigninupPage from './Pages/sign-in-up/sign-in-up.component';
 
 import {auth, creatUserProfileDocument} from './firebase/firebase.utils';
 
-import {setCurrentUser} from './redux/user/user.action';
+import {setCurrentUser} from './redux/user/user.actions';
 
 import "./App.css";
 
