@@ -9,12 +9,12 @@ import './cart-icon.styles.scss'
 const CartIcon=({toogleCartHiden})=>(
     <div className='cart-icon' onClick={toogleCartHiden}>
         <ShoppingBagIcon className='shopping-icon'/>
-        <span className='item-count'>0</span>
+        <span className='item-count'>7</span>
     </div>
 );
 
 const mapDispatchToProps = dispatch =>({
     toogleCartHiden:() => dispatch(toogleCartHiden())
-});
+}); 
 
 export default connect(null,mapDispatchToProps)(CartIcon);
