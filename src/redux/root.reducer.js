@@ -13,6 +13,7 @@ const persistConfig = {
   storage,
   whiteliste: ["cart"],
 };
+
 const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
